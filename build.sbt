@@ -1,6 +1,6 @@
 import scalapb.compiler.Version.protobufVersion
 
-lazy val akkaHttpVersion = "10.0.11"
+lazy val akkaHttpVersion = "10.1.1"
 lazy val akkaVersion    = "2.5.11"
 
 lazy val root = (project in file(".")).
