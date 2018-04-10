@@ -1,4 +1,5 @@
 import scalapb.compiler.Version.protobufVersion
+import scalariform.formatter.preferences._
 
 lazy val akkaHttpVersion = "10.1.1"
 lazy val akkaVersion    = "2.5.11"
@@ -25,7 +26,14 @@ lazy val root = (project in file(".")).
     )
   )
 
+// protocol buffer settings
 PB.targets in Compile := Seq(
   PB.gens.java(protobufVersion) -> ((sourceManaged in Compile).value / "protobuf-java"),
   scalapb.gen(javaConversions=true) -> ((sourceManaged in Compile).value / "protobuf-scala")
 )
+
+// scalariform settings
+scalariformPreferences := scalariformPreferences.value
+  .setPreference(AlignSingleLineCaseStatements, true)
+  .setPreference(DoubleIndentConstructorArguments, true)
+  .setPreference(DanglingCloseParenthesis, Preserve)
